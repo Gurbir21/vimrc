@@ -6,4 +6,38 @@ return {
 		-- optional but recommended
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
+	config = function()
+		require("telescope").setup({
+			defaults = {
+				-- borderchars = {
+				-- 	prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
+				-- 	results = { " " },
+				-- 	preview = { " " },
+				-- },
+				layout_strategy = "horizontal",
+				layout_config = {
+					width = 0.9,
+					height = 0.85,
+
+					horizontal = {
+						preview_width = 0.55,
+						results_width = 0.45,
+					},
+				},
+				selection_caret = "> ",
+				prompt_prefix = " ",
+				results_title = false,
+			},
+
+			pickers = {
+				git_files = {
+					layout_strategy = "vertical",
+				},
+
+				current_buffer_fuzzy_find = {
+					layout_strategy = "vertical",
+				},
+			},
+		})
+	end,
 }

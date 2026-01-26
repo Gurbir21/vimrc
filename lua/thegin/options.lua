@@ -28,9 +28,7 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
-vim.g.netrw_liststyle = 3 -- tree view
 vim.g.netrw_browse_split = 0 -- open in same window
-vim.g.netrw_altv = 1 -- open splits to the right
 vim.g.netrw_winsize = 25
 vim.g.netrw_banner = 0
 

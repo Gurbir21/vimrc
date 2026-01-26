@@ -5,9 +5,27 @@ map("n", "<leader>e", vim.cmd.Ex)
 -- Telescope Commands
 local builtin = require("telescope.builtin")
 map("n", "<leader>sf", builtin.find_files, { desc = "Telescope [S]earch [f]iles" })
+map("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
+map("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 map("n", "<leader>sg", builtin.live_grep, { desc = "Telescope [G]rep [S]earch" })
 map("n", "<leader>sb", builtin.buffers, { desc = "Telescope [S]earch [B]uffers" })
 map("n", "<leader>sh", builtin.help_tags, { desc = "Telescope [S]earch [H]elp" })
+map("n", "<leader>si", builtin.current_buffer_fuzzy_find, { desc = "Fuzzily [S]earch [I]n current buffer" })
+map("n", "<leader>sG", builtin.git_files, { desc = "[S]earch [G]it Files" })
+
+map("n", "<leader>sv", function()
+	builtin.find_files({ layout_strategy = "vertical" })
+end, { desc = "[S]earch [F]iles With Vertical" })
+
+map("n", "<leader>so", function()
+	builtin.live_grep({
+		grep_open_files = true,
+		prompt_title = "Live Grep in Open Files",
+	})
+end, { desc = "[S]earch in [O]pen Files" })
+map("n", "<leader>sn", function()
+	builtin.find_files({ cwd = vim.fn.stdpath("config"), layout_strategy = "vertical" })
+end, { desc = "[S]earch [N]eovim files" })
 
 -- Harpoon
 local harpoon = require("harpoon")
@@ -74,8 +92,8 @@ map(
 map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make [X]ecutable" })
 
 -- Quickfix List
-map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
-map("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Quickfix Next" })
-map("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "Quickfix Prev" })
-map("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Location List Prev" })
-map("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Location List Next" })
+map("n", "<leader>qo", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+map("n", "<leader>qn", "<cmd>cnext<CR>zz", { desc = "[Q]uickfix [N]ext" })
+map("n", "<leader>qp", "<cmd>cprev<CR>zz", { desc = "[Q]uickfix [P]rev" })
+map("n", "<leader>qP", "<cmd>lprev<CR>zz", { desc = "[Q] Location List [P]rev" })
+map("n", "<leader>qN", "<cmd>lnext<CR>zz", { desc = "[Q] Location List [N]ext" })

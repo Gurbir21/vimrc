@@ -1,10 +1,10 @@
 return {
-	'nvim-treesitter/nvim-treesitter',
+	"nvim-treesitter/nvim-treesitter",
 	lazy = false,
-	build = ':TSUpdate',
+	build = ":TSUpdate",
 	config = function()
 		require("nvim-treesitter").setup({
-			ensure_installed = { "help", "javascript", "typescript", "c", "lua", "rust", "java" },
+			ensure_installed = { "help", "javascript", "typescript", "c", "lua", "rust", "java", "zig" },
 			sync_install = false,
 			auto_install = true,
 			highlight = {
@@ -12,5 +12,5 @@ return {
 				additional_vim_regex_highlighting = false,
 			},
 		})
-	end
+	end,
 }
