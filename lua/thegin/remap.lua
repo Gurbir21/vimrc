@@ -27,6 +27,16 @@ map("n", "<leader>sn", function()
 	builtin.find_files({ cwd = vim.fn.stdpath("config"), layout_strategy = "vertical" })
 end, { desc = "[S]earch [N]eovim files" })
 
+map("n", "<leader>sc", function()
+	builtin.find_files({
+		cwd = "~/.config",
+		file_ignore_patterns = {
+			"opencode/",
+			"github%-copilot/",
+		},
+		layout_strategy = "vertical",
+	})
+end, { desc = "[S]earch [C]onfig files" })
 -- Harpoon
 local harpoon = require("harpoon")
 map("n", "<leader>ha", function()
@@ -97,3 +107,7 @@ map("n", "<leader>qn", "<cmd>cnext<CR>zz", { desc = "[Q]uickfix [N]ext" })
 map("n", "<leader>qp", "<cmd>cprev<CR>zz", { desc = "[Q]uickfix [P]rev" })
 map("n", "<leader>qP", "<cmd>lprev<CR>zz", { desc = "[Q] Location List [P]rev" })
 map("n", "<leader>qN", "<cmd>lnext<CR>zz", { desc = "[Q] Location List [N]ext" })
+
+vim.keymap.set("n", "K", function()
+	vim.lsp.buf.hover({ border = "single" }) -- Options: "single", "double", "rounded", "solid"
+end, { desc = "Hover Documentation with Border" })
