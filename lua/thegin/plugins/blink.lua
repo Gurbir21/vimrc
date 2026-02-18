@@ -1,50 +1,56 @@
-return {    
-	'saghen/blink.cmp',
-	event = 'VimEnter',
-	version = '1.*',
+return {
+	"saghen/blink.cmp",
+	event = "VimEnter",
+	version = "1.*",
 	dependencies = {
 		-- Snippet Engine
 		{
-			'L3MON4D3/LuaSnip',
-			version = '2.*',
+			"L3MON4D3/LuaSnip",
+			version = "2.*",
 			build = (function()
-				if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
+				if vim.fn.has("win32") == 1 or vim.fn.executable("make") == 0 then
 					return
 				end
-				return 'make install_jsregexp'
+				return "make install_jsregexp"
 			end)(),
-			dependencies = {
-			},
+			dependencies = {},
 			opts = {},
 		},
-		'folke/lazydev.nvim',
+		"folke/lazydev.nvim",
 	},
 	--- @module 'blink.cmp'
 	--- @type blink.cmp.Config
 	opts = {
 		keymap = {
-			preset = 'default',
-
+			preset = "default",
 		},
-
 		appearance = {
-			nerd_font_variant = 'mono',
+			nerd_font_variant = "mono",
 		},
 
 		completion = {
-			documentation = { auto_show = true, auto_show_delay_ms = 500 },
-		},
-
-		sources = {
-			default = { 'lsp', 'path', 'snippets', 'lazydev' },
-			providers = {
-				lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+			documentation = {
+				auto_show = true,
+				auto_show_delay_ms = 500,
+				window = {
+					winhighlight = "Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder",
+				},
+			},
+			menu = {
+				winhighlight = "Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
 			},
 		},
 
-		snippets = { preset = 'luasnip' },
+		sources = {
+			default = { "lsp", "path", "snippets", "lazydev" },
+			providers = {
+				lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
+			},
+		},
 
-		fuzzy = { implementation = 'lua' },
+		snippets = { preset = "luasnip" },
+
+		fuzzy = { implementation = "lua" },
 
 		signature = { enabled = true },
 	},

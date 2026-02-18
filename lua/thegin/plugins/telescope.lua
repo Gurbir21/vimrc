@@ -18,7 +18,7 @@ return {
 				layout_config = {
 					width = 0.9,
 					height = 0.85,
-
+					preview_cutoff = 40,
 					horizontal = {
 						preview_width = 0.55,
 						results_width = 0.45,
